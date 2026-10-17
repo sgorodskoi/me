@@ -160,7 +160,7 @@ h1 {
 .donate-card:hover { background: rgba(213,255,117,.09); border-color: rgba(213,255,117,.4); }
 .donate-icon { display: grid; place-items: center; width: 52px; height: 52px; flex: 0 0 52px; color: var(--accent); border: 1px solid rgba(213,255,117,.2); border-radius: 15px; background: rgba(213,255,117,.07); }
 .donate-icon svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.donate-action { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; padding-left: 8px; color: var(--accent); font-size: 11px; font-weight: 700; white-space: nowrap; }
+.donate-action { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; padding-left: 8px; color: var(--accent); font-size: 14px; font-weight: 700; white-space: nowrap; }
 .donate-action > span { font-size: 21px; font-weight: 400; }
 
 .footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 35px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.06); color: #656773; font-size: 10px; }
@@ -180,7 +180,7 @@ h1 {
   .project-icon { width: 88px; height: 88px; }
   .footer { font-size: 9px; }
   .donate-card { padding: 16px; }
-  .donate-action { font-size: 10px; }
+  .donate-action { font-size: 13px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
