@@ -94,9 +94,9 @@ h1 {
 .section-label { font-size: 10px; }
 .links-section > .section-label { margin: 0 0 13px 3px; }
 .link-card {
-  display: flex; align-items: center; gap: 13px;
-  min-height: 76px; padding: 13px 16px;
-  margin-top: 9px;
+  display: flex; align-items: center; gap: 16px;
+  min-height: 96px; padding: 18px 20px;
+  margin-top: 12px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
@@ -106,20 +106,20 @@ h1 {
 }
 .link-card:hover { background: var(--surface-hover); border-color: rgba(255,255,255,.17); transform: translateY(-2px); }
 .link-icon {
-  display: grid; place-items: center; flex: 0 0 42px; height: 42px;
-  border: 1px solid rgba(255,255,255,.08); border-radius: 13px;
+  display: grid; place-items: center; flex: 0 0 52px; height: 52px;
+  border: 1px solid rgba(255,255,255,.08); border-radius: 15px;
   background: rgba(255,255,255,.045); color: #e8e9ec;
 }
-.link-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+.link-icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
 .link-icon.icon-wish { color: #ffb7bf; }
 .link-icon.icon-wish svg { fill: rgba(255,183,191,.14); }
 .link-icon.icon-instagram { color: #e7b0ff; }
 .link-icon.icon-email { color: #a7c7ff; }
 .link-icon .solid-dot { fill: currentColor; stroke: none; }
 .link-copy, .donate-copy { display: flex; flex-direction: column; min-width: 0; gap: 4px; }
-.link-copy strong, .donate-copy strong { font-size: 13px; font-weight: 600; }
-.link-copy small, .donate-copy small { color: var(--muted); font-size: 11px; line-height: 1.4; }
-.card-arrow { margin-left: auto; color: #777a84; font-size: 17px; transition: color .2s ease, transform .2s ease; }
+.link-copy strong, .donate-copy strong { font-size: 16px; font-weight: 600; }
+.link-copy small, .donate-copy small { color: var(--muted); font-size: 13px; line-height: 1.4; }
+.card-arrow { margin-left: auto; color: #777a84; font-size: 21px; transition: color .2s ease, transform .2s ease; }
 .link-card:hover .card-arrow { color: var(--accent); transform: translate(2px, -2px); }
 
 .section-heading { display: flex; justify-content: space-between; align-items: center; margin: 0 3px 13px; }
@@ -152,15 +152,15 @@ h1 {
 
 .support-section { margin-top: 27px; }
 .donate-card {
-  display: flex; align-items: center; gap: 12px; padding: 15px;
+  display: flex; align-items: center; gap: 16px; padding: 18px 20px;
   border: 1px solid rgba(213,255,117,.22); border-radius: var(--radius);
   background: linear-gradient(100deg, rgba(213,255,117,.075), rgba(213,255,117,.018));
   transition: background .2s ease, border-color .2s ease;
 }
 .donate-card:hover { background: rgba(213,255,117,.09); border-color: rgba(213,255,117,.4); }
-.donate-icon { display: grid; place-items: center; width: 42px; height: 42px; flex: 0 0 42px; color: var(--accent); border: 1px solid rgba(213,255,117,.2); border-radius: 13px; background: rgba(213,255,117,.07); }
-.donate-icon svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.donate-action { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; padding-left: 8px; color: var(--accent); font-size: 10px; font-weight: 700; white-space: nowrap; }
+.donate-icon { display: grid; place-items: center; width: 52px; height: 52px; flex: 0 0 52px; color: var(--accent); border: 1px solid rgba(213,255,117,.2); border-radius: 15px; background: rgba(213,255,117,.07); }
+.donate-icon svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.donate-action { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; padding-left: 8px; color: var(--accent); font-size: 11px; font-weight: 700; white-space: nowrap; }
 
 .footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 35px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.06); color: #656773; font-size: 10px; }
 .footer-mark { margin-left: 4px; color: #a4b47b; }
@@ -168,7 +168,9 @@ h1 {
 @media (max-width: 420px) {
   .page-shell { width: min(100% - 28px, 500px); padding-top: 42px; }
   .avatar { width: 100px; height: 100px; }
-  .link-card { min-height: 71px; padding: 12px; }
+  .link-card { min-height: 88px; padding: 16px; }
+  .link-copy strong, .donate-copy strong { font-size: 15px; }
+  .link-copy small, .donate-copy small { font-size: 12.5px; }
   .project-banner { min-height: 165px; padding: 19px 16px; }
   .project-content { max-width: min(74%, calc(100% - 100px)); }
   .project-content > strong { font-size: 20px; }
@@ -176,7 +178,8 @@ h1 {
   .art-one { padding-right: 16px; }
   .project-icon { width: 88px; height: 88px; }
   .footer { font-size: 9px; }
-  .donate-action { font-size: 9px; }
+  .donate-card { padding: 16px; }
+  .donate-action { font-size: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
