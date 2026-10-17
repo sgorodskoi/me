@@ -133,20 +133,20 @@ h1 {
   transition: transform .2s ease, border-color .2s ease;
 }
 .project-banner:hover { transform: translateY(-3px); border-color: rgba(255,255,255,.2); }
-.project-primary { background: linear-gradient(110deg, #1c2928 0%, #192222 55%, #243b33 100%); }
+.project-primary { background: linear-gradient(110deg, #0b1f1b 0%, #0d2b25 55%, #0b3b33 100%); }
 .project-secondary { background: linear-gradient(110deg, #24212e 0%, #22202b 55%, #38304c 100%); }
-.project-content { position: relative; z-index: 2; display: flex; align-items: flex-start; flex-direction: column; max-width: 68%; }
-.project-kicker { color: #a4b7a8; font-size: 9px; letter-spacing: .15em; }
+.project-content { position: relative; z-index: 2; display: flex; align-items: flex-start; flex-direction: column; max-width: min(68%, calc(100% - 116px)); }
+.project-kicker { color: #3aed98; font-size: 9px; letter-spacing: .15em; }
 .project-secondary .project-kicker { color: #c1addd; }
 .project-content > strong { margin-top: 10px; font-family: "Space Grotesk", sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -.04em; }
 .project-description { margin-top: 7px; color: #a7adae; font-size: 11px; line-height: 1.6; }
-.project-cta { display: inline-flex; gap: 7px; align-items: center; margin-top: auto; padding-top: 15px; color: var(--accent); font-size: 11px; font-weight: 600; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; max-width: 100%; margin: 10px 0 0; padding: 0; list-style: none; }
+.project-tags li { padding: 3px 8px; color: #a7adae; font-size: 10px; line-height: 1.4; white-space: nowrap; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.04); }
+.project-cta { display: inline-flex; gap: 7px; align-items: center; margin-top: auto; padding-top: 15px; color: #3aed98; font-size: 11px; font-weight: 600; }
 .project-secondary .project-cta { color: #d3b7ff; }
 .project-art { position: absolute; inset: 0 0 0 auto; width: 46%; overflow: hidden; z-index: 1; }
-.art-one .orb { position: absolute; border-radius: 50%; }
-.orb-large { width: 145px; height: 145px; right: -19px; top: 29px; border: 1px solid rgba(206,255,220,.45); background: radial-gradient(circle at 30% 25%, rgba(213,255,117,.36), rgba(79,142,108,.12) 44%, rgba(19,41,37,.03) 75%); box-shadow: inset -13px -10px 25px rgba(4,10,9,.2), 0 0 46px rgba(140,214,160,.08); }
-.orb-small { width: 37px; height: 37px; right: 102px; top: 20px; background: linear-gradient(135deg, #d5ff75, #528e82); box-shadow: 0 0 24px rgba(213,255,117,.17); }
-.orbit { position: absolute; width: 190px; height: 65px; top: 74px; right: -39px; border: 1px solid rgba(220,255,227,.26); border-radius: 50%; transform: rotate(-35deg); }
+.art-one { display: flex; align-items: center; justify-content: flex-end; padding-right: 20px; overflow: visible; }
+.project-icon { width: 104px; height: 104px; flex: none; border: 1px solid rgba(255,255,255,.12); border-radius: 23%; box-shadow: 0 12px 36px rgba(0,185,131,.28); transform: rotate(-6deg); }
 .art-two .grid-shape { position: absolute; width: 122px; height: 122px; right: -7px; top: 30px; transform: rotate(22deg); border: 1px solid rgba(213,183,255,.38); background: repeating-linear-gradient(0deg, transparent 0 15px, rgba(213,183,255,.13) 16px), repeating-linear-gradient(90deg, transparent 0 15px, rgba(213,183,255,.13) 16px); mask-image: linear-gradient(135deg, transparent 0%, #000 24%, #000 72%, transparent 100%); }
 .spark { position: absolute; right: 61px; top: 36px; color: #d3b7ff; font-size: 51px; font-weight: 400; text-shadow: 0 0 28px rgba(211,183,255,.35); }
 
@@ -170,11 +170,11 @@ h1 {
   .avatar { width: 100px; height: 100px; }
   .link-card { min-height: 71px; padding: 12px; }
   .project-banner { min-height: 165px; padding: 19px 16px; }
-  .project-content { max-width: 74%; }
+  .project-content { max-width: min(74%, calc(100% - 100px)); }
   .project-content > strong { font-size: 20px; }
-  .project-art { width: 42%; opacity: .85; }
-  .orb-large { right: -47px; }
-  .orb-small { right: 67px; }
+  .project-art { width: 42%; }
+  .art-one { padding-right: 16px; }
+  .project-icon { width: 88px; height: 88px; }
   .footer { font-size: 9px; }
   .donate-action { font-size: 9px; }
 }
