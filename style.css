@@ -161,9 +161,10 @@ h1 {
 .donate-icon { display: grid; place-items: center; width: 52px; height: 52px; flex: 0 0 52px; color: var(--accent); border: 1px solid rgba(213,255,117,.2); border-radius: 15px; background: rgba(213,255,117,.07); }
 .donate-icon svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .donate-action { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; padding-left: 8px; color: var(--accent); font-size: 11px; font-weight: 700; white-space: nowrap; }
+.donate-action > span { font-size: 21px; font-weight: 400; }
 
 .footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 35px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.06); color: #656773; font-size: 10px; }
-.footer-mark { margin-left: 4px; color: #a4b47b; }
+.footer-mark { margin-left: 4px; }
 
 @media (max-width: 420px) {
   .page-shell { width: min(100% - 28px, 500px); padding-top: 42px; }
