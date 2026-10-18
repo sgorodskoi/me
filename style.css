@@ -147,7 +147,6 @@ h1 {
 .project-link::after { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: 19px; }
 .project-link:focus-visible { outline: none; }
 .project-link:focus-visible::after { outline: 2px solid var(--accent); outline-offset: -2px; }
-.project-banner .appstore-button { pointer-events: none; }
 .project-secondary .project-cta { color: #d3b7ff; }
 .project-art { position: absolute; inset: 0 0 0 auto; width: 46%; overflow: hidden; z-index: -1; pointer-events: none; }
 .art-one { display: flex; align-items: center; justify-content: flex-end; padding-right: 20px; overflow: visible; }
