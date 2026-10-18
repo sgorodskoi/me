@@ -142,6 +142,7 @@
             </li>
           </ul>
         </div>
+        <div class="preview-dots" aria-hidden="true"><span class="is-active"></span><span></span><span></span><span></span><span></span><span></span></div>
       </section>
 
       <section class="app-about">
@@ -263,6 +264,54 @@
         if (paused) { video.pause(); } else { video.play(); }
         toggle.setAttribute('aria-pressed', String(paused));
       });
+    }
+
+    var rail = document.querySelector('.preview-rail');
+    var cards = rail.querySelectorAll('.preview-card');
+    var dots = document.querySelectorAll('.preview-dots span');
+    var dotsFrame = 0;
+    var nudgeDone = false;
+    function syncDots() {
+      dotsFrame = 0;
+      var step = cards[1].offsetLeft - cards[0].offsetLeft;
+      var atEnd = Math.ceil(rail.scrollLeft) + rail.clientWidth >= rail.scrollWidth - 1;
+      var index = atEnd ? dots.length - 1 : Math.min(Math.round(rail.scrollLeft / step), dots.length - 1);
+      for (var i = 0; i < dots.length; i++) { dots[i].classList.toggle('is-active', i === index); }
+    }
+    function queueSyncDots() {
+      if (!dotsFrame) { dotsFrame = requestAnimationFrame(syncDots); }
+    }
+    rail.addEventListener('scroll', function () {
+      if (rail.scrollLeft > 0) { nudgeDone = true; }
+      queueSyncDots();
+    }, { passive: true });
+    window.addEventListener('resize', queueSyncDots);
+    queueSyncDots();
+
+    var nudges = [];
+    function stopNudge() {
+      for (var i = 0; i < nudges.length; i++) { nudges[i].cancel(); }
+      nudges = [];
+    }
+    ['touchstart', 'wheel', 'pointerdown', 'keydown'].forEach(function (type) {
+      rail.addEventListener(type, stopNudge, { passive: true });
+    });
+    if ('IntersectionObserver' in window && rail.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var nudgeObserver = new IntersectionObserver(function (entries) {
+        if (entries[entries.length - 1].intersectionRatio < 0.6) { return; }
+        nudgeObserver.disconnect();
+        if (nudgeDone || rail.scrollLeft > 0 || rail.scrollWidth <= rail.clientWidth) { return; }
+        nudgeDone = true;
+        for (var i = 0; i < cards.length; i++) {
+          nudges.push(cards[i].animate([
+            { transform: 'translateX(0)', easing: 'ease-in-out' },
+            { transform: 'translateX(-40px)', offset: 0.4, easing: 'ease-in-out' },
+            { transform: 'translateX(0)', offset: 0.8 },
+            { transform: 'translateX(0)' }
+          ], { duration: 800, iterations: 2 }));
+        }
+      }, { threshold: 0.6 });
+      nudgeObserver.observe(rail);
     }
   </script>
 </body>
