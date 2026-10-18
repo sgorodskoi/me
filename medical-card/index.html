@@ -305,10 +305,10 @@
         for (var i = 0; i < cards.length; i++) {
           nudges.push(cards[i].animate([
             { transform: 'translateX(0)', easing: 'ease-in-out' },
-            { transform: 'translateX(-40px)', offset: 0.4, easing: 'ease-in-out' },
-            { transform: 'translateX(0)', offset: 0.8 },
+            { transform: 'translateX(-40px)', offset: 0.3333, easing: 'ease-in-out' },
+            { transform: 'translateX(0)', offset: 0.6667 },
             { transform: 'translateX(0)' }
-          ], { duration: 800, iterations: 2 }));
+          ], { duration: 960, iterations: 2 }));
         }
       }, { threshold: 0.6 });
       nudgeObserver.observe(rail);
