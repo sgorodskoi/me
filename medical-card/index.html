@@ -83,15 +83,15 @@
             <li class="preview-card preview-video">
               <figure>
                 <div class="preview-screen">
-                  <img src="assets/screen-timeline.jpg" width="554" height="1206" loading="lazy" decoding="async" alt="Documents grouped by month, each with a person and a medical area">
-                <!-- To add the preview video: delete the <img> above and uncomment this block.
-                <video width="554" height="1206" autoplay muted loop playsinline preload="metadata" poster="assets/screen-timeline.jpg" aria-label="Short preview of the Medical Card timeline">
-                  <source src="assets/preview.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
-                </video>
-                <button class="preview-toggle" type="button" aria-pressed="false" hidden>Pause preview</button>
-                -->
+                  <video width="554" height="1206" autoplay muted loop playsinline preload="metadata" poster="assets/preview-poster.jpg" aria-label="Medical Card preview: add three documents, review what the AI read, open a document, and return to the timeline">
+                    <source src="assets/preview.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
+                  </video>
+                  <button class="preview-toggle" type="button" aria-pressed="false" aria-label="Pause preview" hidden>
+                    <svg class="preview-toggle-pause" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5.5 3.5v9M10.5 3.5v9"/></svg>
+                    <svg class="preview-toggle-play" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3v10l8.5-5z"/></svg>
+                  </button>
                 </div>
-                <figcaption>Everything on one timeline</figcaption>
+                <figcaption>From file to timeline</figcaption>
               </figure>
             </li>
             <li class="preview-card">
@@ -251,13 +251,37 @@
 
     var video = document.querySelector('.preview-video video');
     var toggle = document.querySelector('.preview-toggle');
-    if (video && toggle && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      toggle.hidden = false;
-      toggle.addEventListener('click', function () {
-        var paused = !video.paused;
-        if (paused) { video.pause(); } else { video.play(); }
-        toggle.setAttribute('aria-pressed', String(paused));
-      });
+    if (video && toggle) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        video.removeAttribute('autoplay');
+        video.pause();
+      } else {
+        var userPaused = false;
+        var videoInView = true;
+        var playIfAllowed = function () {
+          if (userPaused || !videoInView) { return; }
+          var attempt = video.play();
+          if (attempt && attempt.catch) {
+            attempt.catch(function (error) {
+              if (error.name !== 'NotAllowedError') { return; }
+              userPaused = true;
+              toggle.setAttribute('aria-pressed', 'true');
+            });
+          }
+        };
+        toggle.hidden = false;
+        toggle.addEventListener('click', function () {
+          userPaused = !userPaused;
+          toggle.setAttribute('aria-pressed', String(userPaused));
+          if (userPaused) { video.pause(); } else { playIfAllowed(); }
+        });
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function (entries) {
+            videoInView = entries[entries.length - 1].isIntersecting;
+            if (videoInView) { playIfAllowed(); } else { video.pause(); }
+          }).observe(video);
+        }
+      }
     }
 
     var rail = document.querySelector('.preview-rail');

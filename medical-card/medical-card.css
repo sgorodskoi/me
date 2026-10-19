@@ -135,7 +135,15 @@ html { scroll-padding-top: 64px; }
 .preview-card figure { display: flex; flex-direction: column; gap: 14px; margin: 0; }
 .preview-screen { position: relative; width: 248px; height: 539px; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 34px; background: var(--surface); }
 .preview-screen img, .preview-screen video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.preview-toggle { position: absolute; left: 12px; bottom: 12px; padding: 6px 12px; color: var(--text); font: inherit; font-size: 12px; font-weight: 600; border: 1px solid var(--line-strong); border-radius: 999px; background: rgba(16, 17, 20, .72); cursor: pointer; }
+.preview-toggle { position: absolute; top: 10px; right: 10px; display: grid; place-items: center; width: 36px; height: 36px; padding: 0; color: var(--text-soft); border: 1px solid var(--line-strong); border-radius: 50%; background: rgba(16, 17, 20, .72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); cursor: pointer; }
+.preview-toggle[hidden] { display: none; }
+.preview-toggle:hover { color: var(--text); background: rgba(16, 17, 20, .88); }
+.preview-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.preview-toggle svg { width: 14px; height: 14px; }
+.preview-toggle-pause { fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.preview-toggle-play { display: none; fill: currentColor; }
+.preview-toggle[aria-pressed="true"] .preview-toggle-pause { display: none; }
+.preview-toggle[aria-pressed="true"] .preview-toggle-play { display: block; }
 .preview-card figcaption { color: var(--muted); font-size: 14px; line-height: 20px; }
 .preview-dots { display: none; justify-content: center; gap: 7px; margin-top: 18px; }
 .preview-dots span { width: 7px; height: 7px; border-radius: 4px; background: rgba(255, 255, 255, .25); }
